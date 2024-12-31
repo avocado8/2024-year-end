@@ -65,6 +65,10 @@ export default function Statistic({ externalUid }: { externalUid?: string }) {
     setAvgLetters(avgLetters);
   };
 
+  const handleRedirect = () => {
+    window.open("https://github.com/avocado8/2024-year-end", "_blank");
+  };
+
   useEffect(() => {
     setUid(externalUid || authUid); // externalUid 우선
   }, [externalUid, authUid]);
@@ -101,10 +105,20 @@ export default function Statistic({ externalUid }: { externalUid?: string }) {
                   </WordContainer>
                 ))}
               </Words>
-              <AvgLetters>
-                <WordsTitle>문서 평균</WordsTitle>
-                <Word>{avgLetters}자</Word>
-              </AvgLetters>
+              <RightSide>
+                <AvgLetters>
+                  <WordsTitle>문서 평균</WordsTitle>
+                  <Word>{avgLetters}자</Word>
+                </AvgLetters>
+                <AvgLetters>
+                  <WordsTitle>통계 아이디어를 보내주세요 :3</WordsTitle>
+                  <Word onClick={handleRedirect} style={{ cursor: "pointer" }}>
+                    리포지토리
+                    <br />
+                    바로가기
+                  </Word>
+                </AvgLetters>
+              </RightSide>
             </ModalContents>
           </Modal>
         </>
@@ -186,7 +200,7 @@ const WordContainer = styled.div`
 
 const Word = styled.div`
   background-color: #9caf88;
-  min-width: 90px;
+  width: 100px;
   text-align: center;
   color: #f2e8d5;
   padding: 5px;
@@ -195,18 +209,28 @@ const Word = styled.div`
 
 const Count = styled.div`
   background-color: #fff;
-  min-width: 30px;
+  max-width: 30px;
   text-align: center;
   padding: 5px;
   border-radius: 5px;
 `;
 
 const AvgLetters = styled.div`
+  width: 130px;
+  text-align: center;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   gap: 5px;
   align-items: center;
   background-color: #fff;
   padding: 50px;
   border-radius: 20px;
+`;
+
+const RightSide = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
 `;
