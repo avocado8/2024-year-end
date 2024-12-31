@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/share/:uid",
+      "destination": "/"
+    },
+    {
+      "source": "/:path*",
+      "destination": "/"
+    }
+  ]
+}
