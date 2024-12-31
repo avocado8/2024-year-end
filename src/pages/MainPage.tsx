@@ -5,12 +5,17 @@ import DataList from "../components/DataList";
 import LogOut from "../components/LogOut";
 import Statistic from "../components/Statistic";
 import MakeShareLink from "../components/MakeShareLink";
+import { useNavigate } from "react-router";
 
 export default function MainPage() {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/");
+  };
   return (
     <>
       <Header>
-        <MainTitle>2024 YEAR END</MainTitle>
+        <MainTitle onClick={handleClick}>2024 YEAR END</MainTitle>
         <MainLine />
       </Header>
       <Wrapper>
@@ -42,6 +47,11 @@ const Header = styled.div`
 const MainTitle = styled.div`
   font-size: 32px;
   color: #c2c5aa;
+  cursor: pointer;
+  &:hover {
+    transition: 0.2s;
+    opacity: 0.6;
+  }
 `;
 
 const MainLine = styled.div`
